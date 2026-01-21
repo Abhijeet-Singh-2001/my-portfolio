@@ -1,0 +1,8 @@
+streamlit
+requests
+langchain
+langchain-huggingface
+langchain-community
+faiss-cpu
+huggingface-hub
+sentence-transformers
