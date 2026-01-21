@@ -1,0 +1,32 @@
+# Abhijeet Singh
+**Location:** Dublin, Ireland
+**Phone:** +353 0899754084
+**Email:** sondhwal.abhijeet1@gmail.com
+**LinkedIn:** linkedin.com/in/abhijeet-singh-8301
+**GitHub:** github.com/Abhijeet-Singh-2001
+
+## Professional Summary
+Data Analyst and Researcher specializing in **Generative AI** and **HR Analytics**. Currently pursuing an MSc in Data Analytics, with a focus on democratizing predictive analytics using **LLMs (LangChain)** and **AutoML (PyCaret)**. Proven experience in Talent Acquisition at **Cielo Talent**, managing applicant pipelines and analyzing recruitment metrics. Skilled in bridging the gap between technical data science and non-technical HR strategy.
+
+## Education
+* **MSc in Data Analytics** | Dublin Business School (Apr 2025 – Present)
+  * **Dissertation:** "Democratizing Predictive People Analytics through the Design and Evaluation of an LLM-Driven AutoML Artifact."
+  * **Focus:** Designing a "Virtual Data Scientist" using LangChain and PyCaret to predict employee attrition.
+* **Post Graduate Diploma in Data Science (NLP)** | IIIT Bangalore (Dec 2021 – Dec 2022)
+* **BSc in Computer Science** | University of Delhi (Jul 2018 – Jul 2021)
+
+## Work Experience
+**Talent Admin & Coordinator | Cielo Talent** (Jun 2023 – Apr 2025)
+* Managed the full recruitment lifecycle and leveraged Applicant Tracking Systems (ATS) to optimize candidate pipelines.
+* Analyzed recruitment metrics to identify trends and recommended process improvements to reduce time-to-hire.
+* Integrated ATS reporting to improve communication flow between stakeholders.
+
+**Recruitment Associate | Mindlance Outsourcing** (Jan 2023 – Apr 2024)
+* Sourced and screened candidates via social media and job boards, building strong IT talent pipelines.
+* Managed job postings and optimized advertisements to attract top candidates.
+
+## Technical Skills
+* **Generative AI & LLMs:** LangChain, RAG, OpenAI API, Prompt Engineering, Agentic Workflows.
+* **Machine Learning:** PyCaret (AutoML), XGBoost, Random Forest, CatBoost, SMOTE (Imbalance handling), SHAP (Explainability).
+* **Data Engineering:** SQL, Python, Pandas, Hive, Snowflake.
+* **Visualization:** Tableau, Streamlit, PowerBI.
