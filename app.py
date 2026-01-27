@@ -1,114 +1,141 @@
+# Importing the libraries
 import streamlit as st
-import requests
-from langchain_huggingface import HuggingFaceEndpoint, HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.chains import RetrievalQA
-from langchain.docstore.document import Document
 import os
+import requests
+import time
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+from huggingface_hub import InferenceClient
 
 # CONFIGURATION
 REPO_OWNER = "Abhijeet-Singh-2001"
-REPO_NAME = "my-portfolio"  
-DATA_FOLDER = "data"            
-HF_TOKEN = os.environ.get("HF_TOKEN") 
+REPO_NAME = "my-portfolio"
+DATA_FOLDER = "data"
+HF_TOKEN = os.environ.get("HF_TOKEN")
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
-# FUNCTION TO FETCH DATA FROM GITHUB
-@st.cache_resource(ttl=3600) 
+# FIX: A list of models to try if one fails
+MODEL_LIST = [
+    "HuggingFaceH4/zephyr-7b-beta",          
+    "mistralai/Mistral-7B-Instruct-v0.2",    
+    "Qwen/Qwen2.5-7B-Instruct"               
+]
+
+st.set_page_config(page_title="Abhijeet's AI", page_icon="")
+st.title(" Chat with Abhijeet's AI")
+
+# 1. ROBUST AI CLIENT (With Fallback)
+def query_llm_with_fallback(messages):
+    client = InferenceClient(token=HF_TOKEN)
+    errors = []
+
+    for model in MODEL_LIST:
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                max_tokens=512,
+                temperature=0.1
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            # If model is loading, wait and retry once
+            if "503" in str(e):
+                time.sleep(2)
+                try:
+                    response = client.chat.completions.create(
+                        model=model,
+                        messages=messages,
+                        max_tokens=512
+                    )
+                    return response.choices[0].message.content
+                except:
+                    pass
+            
+            errors.append(f"{model}: {str(e)}")
+            continue # Try next model
+
+    # If all fail
+    return f" All models failed. Details: {'; '.join(errors)}"
+
+# 2. FETCH DATA
+@st.cache_resource(ttl=3600)
 def fetch_github_content():
     base_url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{DATA_FOLDER}"
-    response = requests.get(base_url)
+    headers = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
     
-    if response.status_code != 200:
-        st.error(f"Failed to fetch data from GitHub. Status: {response.status_code}")
+    try:
+        response = requests.get(base_url, headers=headers)
+        if response.status_code != 200:
+            st.error(f" GitHub Error: {response.status_code}")
+            return []
+        
+        files = response.json()
+        documents = []
+        for file in files:
+            if isinstance(file, dict) and file['name'].endswith((".md", ".txt")):
+                raw_url = file['download_url']
+                content_resp = requests.get(raw_url)
+                if content_resp.status_code == 200:
+                    doc = Document(page_content=content_resp.text, metadata={"source": file['name']})
+                    documents.append(doc)
+        return documents
+    except Exception as e:
+        st.error(f" Connection Error: {e}")
         return []
 
-    files = response.json()
-    documents = []
-
-    for file in files:
-        if file['name'].endswith(".md") or file['name'].endswith(".txt"):
-            # Get the raw content of the file
-            raw_url = file['download_url']
-            content_response = requests.get(raw_url)
-            if content_response.status_code == 200:
-                text = content_response.text
-                # Create a LangChain Document
-                doc = Document(page_content=text, metadata={"source": file['name']})
-                documents.append(doc)
-    
-    return documents
-
-# SETUP RAG PIPELINE
+# 3. SETUP DATABASE
 @st.cache_resource
-def setup_rag_chain(_documents):
-    # Split text into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    chunks = text_splitter.split_documents(_documents)
-
-    # Create Embeddings
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-
-    # Create Vector Store (FAISS)
-    vector_store = FAISS.from_documents(chunks, embeddings)
-
-    # Setup LLM (Mistral-7B)
-    llm = HuggingFaceEndpoint(
-        repo_id="mistralai/Mistral-7B-Instruct-v0.3",
-        task="text-generation",
-        max_new_tokens=512,
-        do_sample=False,
-        repetition_penalty=1.03,
-        huggingfacehub_api_token=HF_TOKEN
-    )
-
-    # Create Retrieval Chain
-    qa = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="stuff",
-        retriever=vector_store.as_retriever(search_kwargs={"k": 3})
-    )
-    return qa
-
-# STREAMLIT UI
-st.set_page_config(page_title="Chat with Abhijeet's AI", page_icon="Abhijeet Singh")
-
-st.title("🤖 Chat with Abhijeet's AI Agent")
-st.markdown("""
-Welcome! I am an AI agent powered by **RAG (Retrieval Augmented Generation)**. 
-I have read Abhijeet's GitHub repository and can answer questions about his:
-- 📄 **Resume & Experience**
-- 🛠️ **Projects (GenAI, NLP, Data Science)**
-- 🎓 **Research & Dissertation**
-""")
-
-# Load Data
-with st.spinner("Fetching latest data from GitHub..."):
-    docs = fetch_github_content()
-
-if docs:
-    qa_chain = setup_rag_chain(docs)
+def setup_vector_db(_documents):
+    if not _documents:
+        return None
     
-    # Initialize Chat History
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+    chunks = splitter.split_documents(_documents)
+    
+    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+    vectorstore = FAISS.from_documents(chunks, embeddings)
+    return vectorstore
+
+# 4. MAIN APP
+if not HF_TOKEN:
+    st.error(" HF_TOKEN is missing. Please add it in Settings.")
+    st.stop()
+
+with st.spinner("Loading knowledge base..."):
+    docs = fetch_github_content()
+    vector_db = setup_vector_db(docs)
+
+if vector_db:
     if "messages" not in st.session_state:
-        st.session_state.messages = []
+        st.session_state.messages = [{"role": "assistant", "content": "Hi There! Hope you're going well. I'm here to give all the detailed information about Abhijeet Singh (Data Scientist)"}]
 
-    # Display Chat History
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+    for msg in st.session_state.messages:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
 
-    # User Input
-    if prompt := st.chat_input("Ask me about Abhijeet's skills..."):
+    if prompt := st.chat_input("Ask me anything..."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # Generate Response
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
-                response = qa_chain.run(prompt)
-                st.markdown(response)
-                st.session_state.messages.append({"role": "assistant", "content": response})
+                # 1. Retrieve Context
+                search_results = vector_db.similarity_search(prompt, k=3)
+                context_text = "\n\n".join([doc.page_content for doc in search_results])
+                
+                # 2. Prepare Messages
+                messages = [
+                    {"role": "user", "content": f"Use this context to answer the question:\n\nContext: {context_text}\n\nQuestion: {prompt}"}
+                ]
+
+                # 3. Generate Answers
+                answer = query_llm_with_fallback(messages)
+                
+                st.markdown(answer)
+                st.session_state.messages.append({"role": "assistant", "content": answer})
 else:
-    st.warning("No data found in the GitHub 'data' folder.")
+    st.stop()
