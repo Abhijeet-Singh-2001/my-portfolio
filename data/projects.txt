@@ -66,9 +66,7 @@ Impact: Automated ticket assignment, significantly improving response times.
 Tech Stack: Topic Modeling, NMF, Text Classification, Unsupervised Learning.
 
 11. IMDB Movies Analytics (SQL Case Study)
-
 Overview: A strategic analysis of movie datasets to guide production planning.
-
 Methodology: Executed complex SQL queries to derive insights on genres, production houses, and target audiences.
-
 Tech Stack: SQL, EDA, Seaborn, Matplotlib.
+
