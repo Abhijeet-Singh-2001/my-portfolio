@@ -1,12 +1,16 @@
-# Personal Bio
+Personal Bio
 
-## Why HR Tech & Data Science?
-My journey is unique because I sit at the intersection of **Talent Acquisition** and **Advanced AI**. [cite_start]During my time at **Cielo Talent**, I saw the "Insight Gap" firsthand—HR teams have data but lack the coding skills to use it[cite: 15, 142]. [cite_start]This inspired my MSc dissertation, where I am building an **LLM-driven Agent** that allows non-technical users to run complex ML models using natural language[cite: 144, 166].
+Why Advanced AI & Data Science? My passion lies in solving the "Insight Gap"—the disconnect between vast enterprise data repositories and the ability to extract actionable value from them. Specializing in Generative AI and Multi-Agent Systems, I build intelligent architectures that democratize analytics. My recent work focuses on developing a "Virtual Data Scientist," an autonomous agentic workflow that integrates Large Language Models (LLMs) with Automated Machine Learning (AutoML) engines to execute rigorous statistical analysis through natural language commands.
 
-## Professional Philosophy
-[cite_start]I follow a **Pragmatist** philosophy—data science tools must work in the real world to solve actual business problems[cite: 195]. I don't just build models for accuracy; [cite_start]I build them for **Utility** and **Explainability** (using tools like SHAP), ensuring that stakeholders trust the AI's decisions[cite: 216, 246].
+Professional Philosophy I adopt a Pragmatist Data Science approach—technological complexity must yield tangible business utility. I move beyond standard accuracy metrics to prioritize Explainable AI (XAI) and Algorithmic Transparency. By integrating tools like SHAP (Shapley Additive Explanations) into my pipelines, I ensure that high-performance "black box" models (like XGBoost or Deep Neural Networks) remain interpretable and trustworthy for stakeholders.
 
-## Core Competencies
-* **Hybrid Skillset:** I can recruit (HR domain knowledge) and I can code (Python/AI).
-* [cite_start]**GenAI Native:** Deep experience with **LangChain**, **RAG**, and **Agentic Workflows**[cite: 144].
-* [cite_start]**Ethical AI:** Strong focus on algorithmic fairness, GDPR compliance, and removing bias from automated decision-making[cite: 237, 242].
+Core Competencies
+
+
+GenAI & Agentic Architectures: Expertise in designing self-correcting Multi-Agent Systems (Orchestrator-Worker-Critic loops) using LangChain, Ollama, and RAG pipelines for automated code generation and reasoning.
+
+
+Full-Stack Data Science: Proficient in end-to-end model development, from data engineering (SQL/Polyglot Persistence) to predictive modeling (Python/PyCaret) and deployment (Streamlit/Hugging Face).
+
+
+Responsible AI Engineering: Deep commitment to Fairness through Awareness and regulatory compliance (GDPR), ensuring automated decision systems are unbiased, secure, and ethically grounded.
