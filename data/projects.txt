@@ -1,26 +1,74 @@
 # Projects & Research
 
-## 1. LLM-Driven AutoML for Attrition Prediction (MSc Dissertation)
-* **Role:** Researcher & Developer
-* [cite_start]**Objective:** Developed a "Virtual Data Scientist" artifact to democratize predictive analytics for HR managers, addressing the "Insight Gap" in Human Resources[cite: 142, 144].
-* [cite_start]**Tech Stack:** Python, **LangChain**, **PyCaret (AutoML)**, **Streamlit**, OpenAI API, SMOTE[cite: 170, 225].
-* **Methodology:**
-    * [cite_start]**Architecture:** Built an Agentic RAG workflow where an LLM interprets natural language queries from HR managers and triggers AutoML pipelines[cite: 144, 178].
-    * [cite_start]**Data:** Trained on the Saudi Employee Attrition Dataset ($N=1,191$), handling class imbalance using SMOTE[cite: 184, 209].
-    * [cite_start]**Modeling:** Optimized an ensemble of Gradient Boosting models (XGBoost, CatBoost) to achieve a target **Recall of >85%** to minimize costly false negatives[cite: 147, 182].
-    * [cite_start]**Explainability:** Integrated **SHAP** (Shapley Additive Explanations) to provide transparency and ensure GDPR compliance regarding automated decision-making[cite: 148, 233].
+Category 1: Generative AI & LLM Engineering
+1. "Chat with Abhijeet's AI" – RAG Recruiter Assistant
+Overview: A live, interactive portfolio assistant using Retrieval Augmented Generation (RAG) to answer recruiter queries in real-time.
+Architecture: Engineered a retrieval pipeline ingesting Markdown data from GitHub using RecursiveCharacterTextSplitter for chunking and FAISS for vector storage.
+Model: Implemented FastEmbed (BAAI/bge-small-en-v1.5) for semantic embeddings and Hugging Face Inference API for serverless generation.
+Deployment: Built the frontend with Streamlit and deployed on Hugging Face Spaces for 24/7 availability.
+Tech Stack: LangChain, FAISS, Hugging Face API, Streamlit, BAAI/bge-small-en-v1.5.
 
-## 2. Credit Card Fraud Detection (Capstone)
-* [cite_start]**Objective:** Built a fraud detection system on highly imbalanced financial data[cite: 61, 66].
-* [cite_start]**Tech Stack:** Python, Scikit-Learn, Random Forest, XGBoost, SMOTE[cite: 24, 66].
-* **Key Outcome:** Achieved high recall using cost-sensitive learning techniques to minimize financial loss from missed fraud cases. [cite_start]Utilized SHAP for feature importance[cite: 68, 69].
+2. "The Virtual Data Scientist" – LLM-Driven AutoML
+Overview: A conversational agent integrating Large Language Models (LLMs) with Automated Machine Learning (AutoML) for zero-code analytics.
+Agentic Workflow: Implemented a LangChain agent acting as a "Code Interpreter" to safely execute Python code and orchestrate dataframe interactions.
+Pipeline: Integrated PyCaret to train/compare 15+ algorithms (XGBoost, CatBoost) and SMOTE for handling imbalanced data.
+Explainability: Embedded SHAP values to generate transparent, natural-language explanations for model predictions.
+Tech Stack: Python, PyCaret, LangChain, Streamlit, OpenAI API, SMOTE.
 
-## 3. Healthcare NLP - Named Entity Recognition (NER)
-* [cite_start]**Objective:** Extract medical entities (diseases, treatments, medications) from unstructured clinical text[cite: 27, 79].
-* [cite_start]**Tech Stack:** SpaCy, CRF Models, Regex[cite: 80].
-* [cite_start]**Outcome:** Standardized clinical data to aid decision-making systems[cite: 81].
+3. Multi-Agent Code Generation & Verification System
+Overview: A robust orchestration system automating Python and C++ code generation using Local LLMs (Ollama/Llama 3).
+Architecture: Designed a three-agent assembly line: an Orchestrator (intent classification), a Generator (synthesis), and a Critic (quality assurance/debugging).
+Impact: Achieved a self-correcting coding loop that validates syntax and logic before final output, significantly reducing manual debugging time.
+Tech Stack: LangChain, Ollama (Llama 3), Python, C++.
+Category 2: Machine Learning & Predictive Modeling
 
-## 4. Telecom Churn Prediction
-* [cite_start]**Objective:** Predict customer churn and identify key drivers of attrition[cite: 25, 71].
-* [cite_start]**Tech Stack:** Logistic Regression, Decision Trees[cite: 71].
-* [cite_start]**Outcome:** Identified tenure and contract type as major churn drivers and recommended retention strategies to improve Customer Lifetime Value (CLV)[cite: 72, 73].
+4. Strategic Customer Retention Engine (Capstone Project)
+Overview: A deep learning-based churn prediction model identifying at-risk customers in the telecommunications sector.
+Technical Challenge: Solved the "Accuracy Paradox" in imbalanced datasets by implementing SMOTE, increasing model Recall from 0% to 80%.
+Model: Engineered a Multi-Layer Perceptron (Deep Learning) model.
+Impact: Developed a Tiered Intervention Framework enabling marketing teams to automate cost-effective retention offers.
+Tech Stack: Deep Learning, Python, SMOTE, Predictive Modeling.
+
+5. Credit Card Fraud Detection System
+Overview: A financial risk system detecting fraudulent transactions using ensemble techniques.
+Methodology: Applied Random Forest and XGBoost on highly imbalanced financial data.
+Explainability: Integrated SHAP values to provide transparency for risk analysts regarding why a transaction was flagged.
+Tech Stack: Random Forest, XGBoost, SHAP, Risk Analysis.
+
+6. Lead Scoring & Conversion Prediction
+Overview: A lead qualification system assigning conversion probabilities to sales leads for an education company.
+Model: Developed Logistic Regression models with automated feature selection.
+Impact: Increased marketing efficiency by prioritizing high-quality leads and reducing customer acquisition costs.
+Tech Stack: Logistic Regression, Business Analytics, System Deployment.
+
+7. Australian House Price Prediction
+Overview: An investment optimization tool predicting property prices.
+Methodology: Applied Ridge, Lasso, and ElasticNet regression techniques with rigorous cross-validation and residual analysis.
+Tech Stack: Regression Analysis, Regularization (L1/L2), ElasticNet, Python.
+
+Category 3: Data Engineering & NLP
+8. Healthcare BI & Polyglot Analytics Architecture
+Overview: A hybrid analytics system analyzing hospital visit patterns.
+Architecture: Designed a "Polyglot Persistence" system integrating SQL Server (Relational) with Neo4j (Graph Database).
+ETL: Built a SQL Star Schema following Kimball methodology to clean data and generate Surrogate Keys.
+Visualization: Engineered Tableau dashboards with synthetic financial features for variance analysis.
+Tech Stack: SQL Server, Neo4j, Tableau, ETL, Data Warehousing.
+
+9. Identifying Entities in Healthcare Data (NLP)
+Overview: A Named Entity Recognition (NER) model extracting medical terms (diseases, treatments) from unstructured clinical text.
+Methodology: Utilized Spacy and Conditional Random Fields (CRF) to standardize clinical data for decision-making.
+Tech Stack: NLP, NER, Spacy, CRF, Regex.
+
+10. Automatic Ticket Classification System
+Overview: An automated customer support routing system.
+Methodology: Applied Non-Negative Matrix Factorization (NMF) for topic modeling and supervised learning to classify unstructured tickets.
+Impact: Automated ticket assignment, significantly improving response times.
+Tech Stack: Topic Modeling, NMF, Text Classification, Unsupervised Learning.
+
+11. IMDB Movies Analytics (SQL Case Study)
+
+Overview: A strategic analysis of movie datasets to guide production planning.
+
+Methodology: Executed complex SQL queries to derive insights on genres, production houses, and target audiences.
+
+Tech Stack: SQL, EDA, Seaborn, Matplotlib.
