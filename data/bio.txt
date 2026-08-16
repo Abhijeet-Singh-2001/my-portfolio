@@ -1,16 +1,89 @@
-Personal Bio
+# Abhijeet Singh - Professional Bio & Profile
 
-Why Advanced AI & Data Science? My passion lies in solving the "Insight Gap"—the disconnect between vast enterprise data repositories and the ability to extract actionable value from them. Specializing in Generative AI and Multi-Agent Systems, I build intelligent architectures that democratize analytics. My recent work focuses on developing a "Virtual Data Scientist," an autonomous agentic workflow that integrates Large Language Models (LLMs) with Automated Machine Learning (AutoML) engines to execute rigorous statistical analysis through natural language commands.
+## Personal Information
+- **Name:** Abhijeet Singh
+- **Title:** Data Scientist | GenAI Engineer
+- **Location:** Dublin, Ireland
+- **Email:** sondhwal.abhijeet1@gmail.com
+- **Phone:** +353 89 975 4084
+- **LinkedIn:** https://www.linkedin.com/in/abhijeet-singh-8301/
+- **GitHub:** https://github.com/Abhijeet-Singh-2001
 
-Professional Philosophy I adopt a Pragmatist Data Science approach—technological complexity must yield tangible business utility. I move beyond standard accuracy metrics to prioritize Explainable AI (XAI) and Algorithmic Transparency. By integrating tools like SHAP (Shapley Additive Explanations) into my pipelines, I ensure that high-performance "black box" models (like XGBoost or Deep Neural Networks) remain interpretable and trustworthy for stakeholders.
+---
 
-Core Competencies
+## About Me / Summary
+Analytical, structured, and detail-oriented Data Scientist and GenAI Engineer with a Master's degree in Data Analytics and hands-on expertise across machine learning, Generative AI, LLMs, NLP, RAG, and agentic AI systems. Experienced in building end-to-end machine learning pipelines, LLM-powered applications, multi-agent systems, retrieval-augmented generation systems, model evaluation frameworks, and enterprise data analytics solutions. Collaborative team player with an ownership mindset and a proven track record of turning complex datasets into clear, actionable business solutions.
 
+---
 
-GenAI & Agentic Architectures: Expertise in designing self-correcting Multi-Agent Systems (Orchestrator-Worker-Critic loops) using LangChain, Ollama, and RAG pipelines for automated code generation and reasoning.
+## Education
+1. **Master of Science in Data Analytics**
+   - *Institution:* Dublin Business School
+   - *Graduation:* April 2025
+   - *Focus Areas:* Data Science, Machine Learning, Statistical Analysis, Data Visualisation, Predictive Analytics, Data Analytics.
 
+2. **Postgraduate Diploma in Data Science**
+   - *Institution:* International Institute of Information Technology (IIIT Bangalore)
+   - *Graduation:* December 2022
 
-Full-Stack Data Science: Proficient in end-to-end model development, from data engineering (SQL/Polyglot Persistence) to predictive modeling (Python/PyCaret) and deployment (Streamlit/Hugging Face).
+3. **Bachelor of Science (Honours) in Physics**
+   - *Institution:* University of Delhi
+   - *Graduation:* July 2021
 
+---
 
-Responsible AI Engineering: Deep commitment to Fairness through Awareness and regulatory compliance (GDPR), ensuring automated decision systems are unbiased, secure, and ethically grounded.
+## Technical Skills & Core Competencies
+
+### Programming & Core Tools
+- Python, SQL, T-SQL, MySQL, PostgreSQL, R, Pandas, NumPy
+
+### Machine Learning & Data Science
+- Scikit-learn, TensorFlow, PyTorch, PyCaret, Feature Engineering, Exploratory Data Analysis (EDA), Regression, Classification, Clustering, Anomaly Detection, Model Evaluation, Hyperparameter Tuning, SHAP / Explainable AI
+
+### Generative AI, LLMs & Agentic Systems
+- Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Agentic AI, Multi-Agent Systems, LangChain, Ollama, Qwen 2.5, Llama 3, Hugging Face Transformers, Fine-tuning, Tool Calling, Model Context Protocol (MCP), Guardrails, LLM Evaluation & Benchmarking
+
+### Natural Language Processing (NLP)
+- BERT, Transformers, spaCy, Text Classification, Semantic Search, Vector Embeddings, Named Entity Recognition (NER)
+
+### Data Engineering & Databases
+- SQL Server, SSIS, SSRS, Data Warehousing, PostgreSQL, MySQL, Neo4j, FAISS Vector DB, Data Modelling, ETL Pipelines
+
+### Visualisation & Deployment
+- Power BI, Tableau, Streamlit, Grafana, Matplotlib, Seaborn, Azure, GCP, Git, API Integration, ML Deployment
+
+---
+
+## Professional Work Experience
+
+### Data Science Intern — CodeAlpha
+- **Duration:** July 2026 – Auguest 2026 (Remote)
+- **Key Responsibilities:**
+  - Developed end-to-end predictive machine learning pipelines using Python, Scikit-learn, TensorFlow, and Pandas.
+  - Performed exploratory data analysis across complex tabular and unstructured datasets.
+  - Conducted VIF-based multicollinearity analysis to identify and address correlated features.
+  - Performed feature engineering and data preprocessing to improve model performance.
+  - Built and evaluated classification and regression models using appropriate performance metrics.
+
+### Talent Administrator & Coordinator — Cielo Talent
+- **Duration:** 2023 – 2025 (Remote)
+- **Key Responsibilities:**
+  - Coordinated stakeholder operations, ATS compliance, HR reporting, and data tracking across major global enterprise accounts.
+  - Supported workflow optimisation and process automation.
+
+### US IT Recruiter — Mindlance Outsourcing
+- **Duration:** 2022 – 2023 (Hybrid)
+- **Key Responsibilities:**
+  - Managed technical recruitment workflows across diverse IT and technology positions.
+  - Conducted market intelligence and reporting to support recruitment decisions using ATS systems like Workday and JobDiva.
+
+---
+
+## Core Certifications
+- Data Science
+- Machine Learning
+- Generative AI
+- Large Language Models
+- NLP
+- SQL
+- Python
